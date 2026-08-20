@@ -1,0 +1,7 @@
+{
+  "name": "Krishi-Setu",
+  "description": "Sovereign Cyber-Agriculture Operating System with Multilingual Voice Action, Patta-Setu digital tenancy, RBI ULI credit sanction, Kavach anti-counterfeit neural shield, and Sheet-Vahan cold-chain arbitrage.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
