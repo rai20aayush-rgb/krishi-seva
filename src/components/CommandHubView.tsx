@@ -17,7 +17,11 @@ import {
   CheckCircle2, 
   AlertCircle, 
   Bot, 
-  ChevronRight 
+  ChevronRight,
+  Calendar,
+  CloudRain,
+  SunMedium,
+  Compass
 } from 'lucide-react';
 import { playClickBeep } from '../utils/audio';
 
@@ -66,13 +70,25 @@ export const CommandHubView: React.FC<CommandHubViewProps> = ({
     } catch (err) {
       setAdvisorResponse(
         currentLang === 'ta'
-          ? "சென்டினல்-2 நிலப்பரப்பு படி மண்ணின் ஈரப்பதம் 38%. குளிர்சாதன வாகனத்தில் பதிவு செய்து மெட்ரோ மண்டியில் கிலோவுக்கு ₹32 பெறுங்கள்."
-          : "सेंटिनल-2 सेटेलाइट के अनुसार आपकी मिट्टी में 38% नमी है। अगले 3 दिनों में टमाटर तुड़ाई कर शीत-वाहन बुक करें ताकि ₹32/किग्रा का भाव मिले।"
+          ? "சென்டினல்-2 நிலப்பரப்பு படி மண்ணின் ஈரப்பதம் 64%. காரீஃப் பருவத்தில் குளிர்சாதன வாகனத்தில் பதிவு செய்து மெட்ரோ மண்டியில் கிலோவுக்கு ₹32 பெறுங்கள்."
+          : "सेंटिनल-2 सेटेलाइट के अनुसार खरीफ मौसम में आपकी मिट्टी में 64% नमी है। अगले 3 दिनों में टमाटर तुड़ाई कर शीत-वाहन बुक करें ताकि ₹32/किग्रा का भाव मिले।"
       );
     } finally {
       setIsAdvisorLoading(false);
     }
   };
+
+  const currentDateFormatted = currentLang === 'hi'
+    ? 'गुरुवार, 20 अगस्त 2026'
+    : currentLang === 'ta'
+    ? 'வியாழன், 20 ஆகஸ்ட் 2026'
+    : 'Thursday, 20 August 2026';
+
+  const currentSeason = currentLang === 'hi'
+    ? 'खरीफ 2026 मानसून सत्र'
+    : currentLang === 'ta'
+    ? 'காரீஃப் 2026 பருவமழை'
+    : 'Kharif 2026 Monsoon Season';
 
   return (
     <div className="space-y-4 pb-20 animate-fade-in">
@@ -94,6 +110,69 @@ export const CommandHubView: React.FC<CommandHubViewProps> = ({
         <div className="px-2.5 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-xs">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
           <span>SOVEREIGN AGRI-NODE</span>
+        </div>
+      </div>
+
+      {/* Live Date & Agro-Climatic Monsoon Scenario Banner */}
+      <div className="p-4 rounded-3xl bg-white border border-[#E8E2D9] shadow-sm space-y-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#F0EBE4] pb-2.5">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 rounded-xl bg-[#E8F0E7] text-[#4A5D48]">
+              <Calendar className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-[#3A3A30] font-mono">
+                {currentDateFormatted}
+              </p>
+              <span className="text-[10px] font-semibold text-[#7E8F7C]">
+                {currentSeason} • {farmer.district}, {farmer.state}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F2] border border-[#D9C5B2] text-[10px] font-mono text-[#7A624E] font-semibold">
+            <CloudRain className="w-3.5 h-3.5 text-[#7E8F7C]" />
+            <span>Monsoon Active (7.4 mm)</span>
+          </div>
+        </div>
+
+        {/* Real-Time Micro-Climate Weather Telemetry */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-0.5">
+          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
+            <Thermometer className="w-4 h-4 text-[#C89B65]" />
+            <div>
+              <p className="text-[10px] text-[#8C8275]">{t.ambientTemp}</p>
+              <p className="text-xs font-mono font-bold text-[#3A3A30]">31.5°C</p>
+              <p className="text-[9px] text-[#8C8275]">Feels 35°C</p>
+            </div>
+          </div>
+
+          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
+            <Droplets className="w-4 h-4 text-[#7E8F7C]" />
+            <div>
+              <p className="text-[10px] text-[#8C8275]">{t.soilMoisture}</p>
+              <p className="text-xs font-mono font-bold text-[#4A5D48]">64.8% RH</p>
+              <p className="text-[9px] text-[#7E8F7C]">Optimal Sowing</p>
+            </div>
+          </div>
+
+          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
+            <Wind className="w-4 h-4 text-[#7E8F7C]" />
+            <div>
+              <p className="text-[10px] text-[#8C8275]">{t.airQuality}</p>
+              <p className="text-xs font-mono font-bold text-[#4A5D48]">38 (Clean)</p>
+              <p className="text-[9px] text-[#8C8275]">SW 14 km/h</p>
+            </div>
+          </div>
+
+          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
+            <Radio className="w-4 h-4 text-[#7E8F7C] animate-pulse" />
+            <div>
+              <p className="text-[10px] text-[#8C8275]">{t.satellitePass}</p>
+              <p className="text-xs font-mono font-bold text-[#4A5D48]">T-14 Min</p>
+              <p className="text-[9px] text-[#8C8275]">11:42 IST Today</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -211,49 +290,27 @@ export const CommandHubView: React.FC<CommandHubViewProps> = ({
         </div>
       </div>
 
-      {/* Live Telemetry Strip */}
-      <div className="p-4 rounded-3xl bg-white border border-[#E8E2D9] shadow-sm">
-        <div className="flex items-center justify-between mb-2.5">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-[#3A3A30] uppercase tracking-wider">
-            <Radio className="w-3.5 h-3.5 text-[#7E8F7C] animate-pulse" />
-            <span>{t.telemetryTitle}</span>
+      {/* Kharif Monsoon Agro-Advisory & Action Banner */}
+      <div className="p-4 rounded-3xl bg-[#FAF7F2] border border-[#D9C5B2] shadow-sm space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-[#7A624E] uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-[#7E8F7C]" />
+            <span>
+              {currentLang === 'hi' ? 'खरीफ 2026 मौसम सलाह' : currentLang === 'ta' ? 'காரீஃப் 2026 பயிர் ஆலோசனை' : 'Kharif 2026 Monsoon Advisory'}
+            </span>
           </div>
-          <span className="text-[10px] text-[#7E8F7C] font-mono font-bold">LIVE SENSORS</span>
+          <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white text-[#7A624E] border border-[#D9C5B2] font-semibold">
+            ICAR-PUSA SYNC
+          </span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
-            <Droplets className="w-4 h-4 text-[#7E8F7C]" />
-            <div>
-              <p className="text-[10px] text-[#8C8275]">{t.soilMoisture}</p>
-              <p className="text-xs font-mono font-bold text-[#3A3A30]">38.4% RH</p>
-            </div>
-          </div>
-
-          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
-            <Thermometer className="w-4 h-4 text-[#C89B65]" />
-            <div>
-              <p className="text-[10px] text-[#8C8275]">{t.ambientTemp}</p>
-              <p className="text-xs font-mono font-bold text-[#3A3A30]">29.8°C</p>
-            </div>
-          </div>
-
-          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
-            <Wind className="w-4 h-4 text-[#7E8F7C]" />
-            <div>
-              <p className="text-[10px] text-[#8C8275]">{t.airQuality}</p>
-              <p className="text-xs font-mono font-bold text-[#4A5D48]">52 (Good)</p>
-            </div>
-          </div>
-
-          <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] flex items-center gap-2">
-            <Radio className="w-4 h-4 text-[#A85847]" />
-            <div>
-              <p className="text-[10px] text-[#8C8275]">{t.satellitePass}</p>
-              <p className="text-xs font-mono font-bold text-[#A85847]">T-42 Min</p>
-            </div>
-          </div>
-        </div>
+        <p className="text-xs text-[#5A554C] leading-relaxed">
+          {currentLang === 'hi'
+            ? 'अगस्त मानसून की बारिश से खेत में पर्याप्त जलस्तर है। कवक संक्रमण से बचाव के लिए नैनो-यूरिया और जैविक फफूंदनाशी का छिड़काव करें। खराब सड़न से बचने हेतु टमाटर की तुड़ाई कर तुरंत शीत-वाहन बुक करें।'
+            : currentLang === 'ta'
+            ? 'ஆகஸ்ட் பருவமழை போதுமான ஈரப்பதத்தை அளிக்கிறது. பூஞ்சை தொற்றை தடுக்க நானோ யூரியாவை பயன்படுத்தவும். தக்காளி அறுவடைக்கு குளிர்சாதன வாகனத்தை பதிவு செய்யவும்.'
+            : 'Sufficient monsoon saturation recorded for Kharif cycle. Apply verified Nano Urea for canopy density, and book refrigerated transit to prevent post-harvest monsoon rotting.'}
+        </p>
       </div>
 
       {/* Tri-Module Gateway Cards */}

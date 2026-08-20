@@ -56,12 +56,12 @@ export const PRESET_FARMERS: Record<string, FarmerProfile> = {
 };
 
 export const SATELLITE_NDVI_TIMELINE: NDVIDataPoint[] = [
-  { month: 'Sep 25', ndvi: 0.42, biomass: 'Early Vegetative', rainfallMm: 110, status: 'Moderate' },
-  { month: 'Oct 25', ndvi: 0.58, biomass: 'Active Canopy', rainfallMm: 85, status: 'Vibrant' },
-  { month: 'Nov 25', ndvi: 0.69, biomass: 'Peak Flowering', rainfallMm: 45, status: 'Optimal' },
-  { month: 'Dec 25', ndvi: 0.74, biomass: 'Fruiting Stage', rainfallMm: 15, status: 'Optimal' },
-  { month: 'Jan 26', ndvi: 0.71, biomass: 'Maturity / Harvest', rainfallMm: 8, status: 'Optimal' },
-  { month: 'Feb 26 (Now)', ndvi: 0.74, biomass: 'Peak Vegetative Biomass', rainfallMm: 5, status: 'Optimal' },
+  { month: 'Mar 26', ndvi: 0.46, biomass: 'Summer Fallow / Soil Prep', rainfallMm: 14, status: 'Moderate' },
+  { month: 'Apr 26', ndvi: 0.54, biomass: 'Pre-Monsoon Sowing', rainfallMm: 32, status: 'Moderate' },
+  { month: 'May 26', ndvi: 0.62, biomass: 'Nursery Emergence', rainfallMm: 68, status: 'Vibrant' },
+  { month: 'Jun 26', ndvi: 0.73, biomass: 'Kharif Monsoon Vegetative', rainfallMm: 185, status: 'Optimal' },
+  { month: 'Jul 26', ndvi: 0.79, biomass: 'Canopy Density Peak', rainfallMm: 242, status: 'Optimal' },
+  { month: 'Aug 26 (Now)', ndvi: 0.82, biomass: 'Active Monsoon Biomass', rainfallMm: 215, status: 'Optimal' },
 ];
 
 export const KAVACH_BATCH_AUTHENTIC: KavachBatch = {
@@ -71,13 +71,13 @@ export const KAVACH_BATCH_AUTHENTIC: KavachBatch = {
   manufacturer: 'Indian Farmers Fertiliser Cooperative (Kalol Unit)',
   category: 'Fertilizer',
   mrp: 225,
-  mfgDate: '15-01-2026',
-  expDate: '14-01-2028',
+  mfgDate: '05-08-2026',
+  expDate: '04-08-2028',
   status: 'AUTHENTIC',
   geoHistory: [
-    { city: 'Kalol Factory', state: 'Gujarat', timestamp: '2026-01-16 10:30', scannerType: 'Production QA' },
-    { city: 'Patna Regional Hub', state: 'Bihar', timestamp: '2026-01-28 14:15', scannerType: 'Wholesale Depot' },
-    { city: 'Samastipur PACS Center', state: 'Bihar', timestamp: '2026-02-14 09:40', scannerType: 'Retail Agri-Store' }
+    { city: 'Kalol Factory', state: 'Gujarat', timestamp: '2026-08-08 09:30', scannerType: 'Production QA' },
+    { city: 'Patna Regional Hub', state: 'Bihar', timestamp: '2026-08-16 11:20', scannerType: 'Wholesale Depot' },
+    { city: 'Samastipur PACS Center', state: 'Bihar', timestamp: '2026-08-20 08:45', scannerType: 'Retail Agri-Store' }
   ],
   quotaUsagePct: 24.0,
   chemicalSpectrometryPct: 99.4,
@@ -92,13 +92,13 @@ export const KAVACH_BATCH_COUNTERFEIT: KavachBatch = {
   manufacturer: 'Unverified Third-Party Cloner (Simulated)',
   category: 'Fertilizer',
   mrp: 1350,
-  mfgDate: '02-02-2026',
-  expDate: '01-02-2028',
+  mfgDate: '12-08-2026',
+  expDate: '11-08-2028',
   status: 'COUNTERFEIT_CLONE',
   geoHistory: [
-    { city: 'Patna Warehouse', state: 'Bihar', timestamp: '2026-02-19 11:15', scannerType: 'Local PACS' },
-    { city: 'Varanasi Mandi', state: 'Uttar Pradesh', timestamp: '2026-02-19 11:27', scannerType: 'Private Dealer' },
-    { city: 'Samastipur Farm', state: 'Bihar', timestamp: '2026-02-19 11:42', scannerType: 'Farmer Mobile HUD' },
+    { city: 'Patna Warehouse', state: 'Bihar', timestamp: '2026-08-20 09:12', scannerType: 'Local PACS' },
+    { city: 'Varanasi Mandi', state: 'Uttar Pradesh', timestamp: '2026-08-20 09:24', scannerType: 'Private Dealer' },
+    { city: 'Samastipur Farm', state: 'Bihar', timestamp: '2026-08-20 09:41', scannerType: 'Farmer Mobile HUD' },
   ],
   velocityKmH: 850,
   quotaUsagePct: 720.0,
@@ -112,10 +112,10 @@ export const DEFAULT_REEFER: ReeferTelemetry = {
   truckNumber: 'BR-09-GC-4402',
   driverName: 'Mohan Yadav',
   driverPhone: '+91 97182 33491',
-  currentTempC: 4.2,
+  currentTempC: 4.0,
   targetTempC: 4.0,
-  humidityPct: 88,
-  ambientTempC: 31.4,
+  humidityPct: 86,
+  ambientTempC: 32.2,
   gpsLocation: {
     lat: 25.8624,
     lng: 85.7812,

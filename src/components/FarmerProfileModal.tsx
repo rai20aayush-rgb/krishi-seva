@@ -22,6 +22,7 @@ interface FarmerProfileModalProps {
   currentLang: Language;
   farmer: FarmerProfile;
   onSelectPreset: (presetKey: 'bihar' | 'tamil') => void;
+  onOpenWelcome?: () => void;
 }
 
 export const FarmerProfileModal: React.FC<FarmerProfileModalProps> = ({
@@ -30,6 +31,7 @@ export const FarmerProfileModal: React.FC<FarmerProfileModalProps> = ({
   currentLang,
   farmer,
   onSelectPreset,
+  onOpenWelcome,
 }) => {
   const t = TRANSLATIONS[currentLang];
 
@@ -144,6 +146,20 @@ export const FarmerProfileModal: React.FC<FarmerProfileModalProps> = ({
             </button>
           </div>
         </div>
+
+        {/* Reopen Welcome Screen Button */}
+        {onOpenWelcome && (
+          <button
+            onClick={() => {
+              playClickBeep();
+              onClose();
+              onOpenWelcome();
+            }}
+            className="w-full py-2.5 rounded-2xl bg-[#FAF7F2] hover:bg-[#F2EDE7] text-[#4A5D48] text-xs font-bold border border-[#7E8F7C]/30 transition-all flex items-center justify-center gap-2"
+          >
+            <span>🌾 {t.welcomeTitle} (Welcome Guide)</span>
+          </button>
+        )}
 
         {/* Close Button */}
         <button

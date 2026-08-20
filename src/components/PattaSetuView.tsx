@@ -137,7 +137,7 @@ export const PattaSetuView: React.FC<PattaSetuViewProps> = ({
               </div>
               <div className="text-[11px]">
                 <p className="font-bold text-[#3A3A30]">{t.landownerSigned}</p>
-                <p className="text-[9px] text-[#7E8F7C] font-mono">14-Jan-2026 11:24 IST • Cert #9921</p>
+                <p className="text-[9px] text-[#7E8F7C] font-mono">18-Aug-2026 10:14 IST • Cert #9921</p>
               </div>
             </div>
 
@@ -147,7 +147,7 @@ export const PattaSetuView: React.FC<PattaSetuViewProps> = ({
               </div>
               <div className="text-[11px]">
                 <p className="font-bold text-[#3A3A30]">{t.tenantSigned}</p>
-                <p className="text-[9px] text-[#7A624E] font-mono">14-Jan-2026 11:32 IST • Cert #9922</p>
+                <p className="text-[9px] text-[#7A624E] font-mono">18-Aug-2026 10:22 IST • Cert #9922</p>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ export const PattaSetuView: React.FC<PattaSetuViewProps> = ({
             </h3>
           </div>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#E8F0E7] text-[#4A5D48] border border-[#7E8F7C]/30 font-bold">
-            NDVI: 0.74 (VIBRANT)
+            NDVI: 0.82 (OPTIMAL KHARIF)
           </span>
         </div>
 
@@ -317,6 +317,28 @@ export const PattaSetuView: React.FC<PattaSetuViewProps> = ({
             </div>
           </div>
         )}
+
+        {/* 1-Click Legal Protection & Section 65B Escalation */}
+        <div className="mt-3 pt-3 border-t border-[#F0EBE4] text-xs">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] font-mono text-[#736B5E] uppercase flex items-center gap-1.5 font-semibold">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#7E8F7C]" />
+              कानूनी सुरक्षा व विवाद निवारण (Sec. 65B)
+            </span>
+            <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-[#FAF7F2] text-[#7A624E] border border-[#D9C5B2] font-semibold">
+              Model Land Act
+            </span>
+          </div>
+
+          <div className="p-3 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] text-[11px] text-[#5A554C] leading-relaxed space-y-1">
+            <p className="font-semibold text-[#3A3A30]">
+              ✓ Adverse Possession Waived (प्रतिकूल कब्ज़ा दावा स्वतः निरस्त)
+            </p>
+            <p className="text-[10px] text-[#736B5E]">
+              डिजिटल पट्टा फॉर्म-7A भारतीय साक्ष्य अधिनियम Sec. 65B के तहत न्यायालय और बैंक दोनों में पूर्ण रूप से मान्य है।
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

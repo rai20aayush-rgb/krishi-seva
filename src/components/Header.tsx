@@ -20,6 +20,7 @@ interface HeaderProps {
   onOpenVoice: () => void;
   onOpenProfile: () => void;
   currentView: ViewTab;
+  onOpenWelcome?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -28,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
   farmer,
   onOpenVoice,
   onOpenProfile,
+  onOpenWelcome,
 }) => {
   const t = TRANSLATIONS[currentLang];
 
@@ -60,9 +62,19 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Main Header Row */}
       <div className="max-w-md mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
         {/* App Identity & Brand */}
-        <div className="flex items-center gap-2.5">
+        <button
+          id="header-brand-welcome-btn"
+          onClick={() => {
+            if (onOpenWelcome) {
+              playClickBeep();
+              onOpenWelcome();
+            }
+          }}
+          className="flex items-center gap-2.5 text-left group hover:opacity-90 transition-opacity"
+          title="Open Krishi-Setu Welcome Guide"
+        >
           <div className="relative">
-            <div className="w-10 h-10 rounded-2xl bg-[#D9C5B2] border-2 border-white shadow-sm flex items-center justify-center overflow-hidden">
+            <div className="w-10 h-10 rounded-2xl bg-[#D9C5B2] border-2 border-white shadow-sm flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform">
               <span className="text-xl">🌾</span>
             </div>
             <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#7E8F7C] border border-white flex items-center justify-center shadow-xs">
@@ -83,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
               {t.badgeGovt}
             </p>
           </div>
-        </div>
+        </button>
 
         {/* Action Controls: Language Switcher & Voice AI & Profile */}
         <div className="flex items-center gap-1.5">

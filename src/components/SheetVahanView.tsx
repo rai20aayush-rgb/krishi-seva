@@ -213,7 +213,7 @@ export const SheetVahanView: React.FC<SheetVahanViewProps> = ({
         </div>
 
         {/* Highlight Arbitrage Extra Profit Banner */}
-        <div className="p-3 rounded-2xl bg-[#FAF7F2] border border-[#D9C5B2] flex items-center justify-between">
+        <div className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#D9C5B2] flex items-center justify-between">
           <div>
             <p className="text-[10px] uppercase font-mono text-[#7A624E] font-semibold">{t.netFarmerGain}</p>
             <p className="text-lg font-black text-[#4A5D48] font-mono">
@@ -222,6 +222,21 @@ export const SheetVahanView: React.FC<SheetVahanViewProps> = ({
           </div>
           <div className="px-3 py-1 rounded-xl bg-[#7E8F7C] text-white font-bold text-xs shadow-xs">
             {t.gainPct}
+          </div>
+        </div>
+
+        {/* Transparent Logistics Breakdown */}
+        <div className="p-3 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9] text-[11px] space-y-1.5">
+          <p className="text-[10px] font-mono text-[#736B5E] uppercase font-semibold">
+            पारदर्शी लॉजिस्टिक्स व शुल्क (Zero Upfront Fee)
+          </p>
+          <div className="flex justify-between text-[#5A554C]">
+            <span>कोल्ड ट्रक चालक किराया (₹2.00/kg):</span>
+            <span className="font-mono font-semibold">₹{(totalWeightKg * 2.0).toLocaleString('en-IN')}</span>
+          </div>
+          <div className="flex justify-between text-[#4A5D48]">
+            <span>Krishi-Setu प्लेटफॉर्म शुल्क (₹0.50/kg):</span>
+            <span className="font-mono font-semibold">₹{(totalWeightKg * 0.5).toLocaleString('en-IN')}</span>
           </div>
         </div>
       </div>
@@ -249,7 +264,7 @@ export const SheetVahanView: React.FC<SheetVahanViewProps> = ({
 
           <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9]">
             <p className="text-[10px] text-[#8C8275]">{t.internalTemp}</p>
-            <p className="font-mono font-bold text-[#4A5D48]">4.2°C / 88% RH</p>
+            <p className="font-mono font-bold text-[#4A5D48]">{DEFAULT_REEFER.currentTempC}°C / {DEFAULT_REEFER.humidityPct}% RH</p>
           </div>
 
           <div className="p-2.5 rounded-2xl bg-[#FDFBF7] border border-[#E8E2D9]">
