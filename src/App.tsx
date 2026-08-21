@@ -207,6 +207,7 @@ export default function App() {
         isOpen={isVoiceOpen}
         onClose={() => setIsVoiceOpen(false)}
         currentLang={currentLang}
+        onLanguageChange={setCurrentLang}
         currentView={currentView}
         farmer={farmer}
         onExecuteAction={handleExecuteVoiceAction}
